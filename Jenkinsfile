@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Init Build') {
       steps {
+        sh 'chmod +x gradlew'
         sh './gradlew setupCiWorkspace'
       }
     }
@@ -11,7 +12,7 @@ pipeline {
         sh './gradlew build'
       }
     }
-    stage('') {
+    stage('error') {
       steps {
         archiveArtifacts 'build/libs/*'
       }
